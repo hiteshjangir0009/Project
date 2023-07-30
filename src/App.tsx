@@ -11,21 +11,47 @@ import {
 } from 'react-native';
 import Login from './login';
 import Home from './home';
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from '@react-navigation/stack';
 
 
+
+const Stack = createStackNavigator();
 const App = () => {
   return (
-    <><SafeAreaView style={styles.maincontainer}>
-      <><View >
-        <Login />
-        {/* <Home /> */}
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name='Login' component={Loginnav} />
+        <Stack.Screen name='home' component={Homenav} />
+      </Stack.Navigator>
 
-      </View></>
+    </NavigationContainer>
 
-    </SafeAreaView>
+  )
+}
+const Loginnav = () => {
+  return(
+  <SafeAreaView style={styles.maincontainer}>
+    <View>
+      <Login />
+
+    </View>
+  </SafeAreaView>
+
+  )
+}
+
+const Homenav = () => {
+  return(
+
+  <><SafeAreaView style={styles.maincontainer}>
+    <><View >
+      <Home />
+    </View></>
+  </SafeAreaView>
 
     {/* BOTTOM NAVBAR */}
-    <View style={{backgroundColor:'white', }}>
+    <View style={{ backgroundColor: 'white', }}>
       <View style={styles.container}>
         <TouchableOpacity>
           <Image style={styles.img} source={require('../src/product/icons/home.png')}></Image>
@@ -39,10 +65,13 @@ const App = () => {
         <TouchableOpacity>
           <Image style={styles.img} source={require('../src/product/icons/menu.png')}></Image>
         </TouchableOpacity>
-        </View>
-      </View></>
+      </View>
+    </View></>
+
+
   )
 }
+
 
 const styles = StyleSheet.create({
   maincontainer: {
@@ -53,12 +82,12 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: 'gray',
     // marginVertical: 20,
-    paddingVertical:10,
+    paddingVertical: 10,
     flexDirection: 'row',
     justifyContent: 'space-evenly',
-    
+
   },
-  img:{
+  img: {
     height: 30,
     width: 30,
 
