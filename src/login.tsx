@@ -26,7 +26,7 @@ const Login = () => {
                 contact us on mykhetstore@gmail.com
             </Text>
             <View>
-                <Text style={styles.text1}>Enter your Email</Text>
+                <Text style={styles.text1}>Enter your Name</Text>
                 <TextInput
                     style={styles.inputtext}
                     placeholderTextColor={'gray'}
@@ -36,11 +36,11 @@ const Login = () => {
                     value={email}
                     onChangeText={(actualdata) => setemail(actualdata)}
                 />
-                <Text style={styles.text1}>Set Password</Text>
+                <Text style={styles.text1}>Phone No.</Text>
                 <TextInput
                     placeholderTextColor={'gray'}
                     style={styles.inputtext}
-                    placeholder='Password'
+                    placeholder='765XXXXXXX'
                     autoCapitalize="none"
                     autoCorrect={false}
                     secureTextEntry={true}

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import 'react-native-gesture-handler';
 import {
   StyleSheet,
   View,
@@ -16,13 +17,14 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 
 
+
 const Stack = createStackNavigator();
 const App = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen name='Login' component={Loginnav} />
-        <Stack.Screen name='home' component={Homenav} />
+        <Stack.Screen name='Home' component={Homenav} />
       </Stack.Navigator>
 
     </NavigationContainer>
