@@ -10,7 +10,6 @@ import {
   Text
 } from 'react-native';
 import Login from './login';
-import Imagefile from './images';
 import Home from './home';
 
 
@@ -18,8 +17,8 @@ const App = () => {
   return (
     <><SafeAreaView style={styles.maincontainer}>
       <><View >
-        {/* <Login /> */}
-        <Home />
+        <Login />
+        {/* <Home /> */}
 
       </View></>
 
@@ -29,16 +28,16 @@ const App = () => {
     <View style={{backgroundColor:'white', }}>
       <View style={styles.container}>
         <TouchableOpacity>
-          <Image style={styles.img} source={require('../src/product/home.png')}></Image>
+          <Image style={styles.img} source={require('../src/product/icons/home.png')}></Image>
         </TouchableOpacity>
         <TouchableOpacity>
-          <Image style={styles.img} source={require('../src/product/search.png')}></Image>
+          <Image style={styles.img} source={require('../src/product/icons/search.png')}></Image>
         </TouchableOpacity>
         <TouchableOpacity>
-          <Image style={styles.img} source={require('../src/product/cart.png')}></Image>
+          <Image style={styles.img} source={require('../src/product/icons/cart.png')}></Image>
         </TouchableOpacity>
         <TouchableOpacity>
-          <Image style={styles.img} source={require('../src/product/menu.png')}></Image>
+          <Image style={styles.img} source={require('../src/product/icons/menu.png')}></Image>
         </TouchableOpacity>
         </View>
       </View></>

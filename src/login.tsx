@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, StyleSheet, TouchableOpacity, Touchable, Alert } from 'react-native';
+import { View, Text, TextInput, StyleSheet, TouchableOpacity, Touchable, Alert, Image } from 'react-native';
 import CheckBox from 'react-native-check-box';
-import Imagefile from './images';
+
 
 
 
@@ -66,7 +66,10 @@ const Login = () => {
                     disabled={!ischeck}
                     onPress={submit}
                 >
-                    <Imagefile />
+                    <Image 
+                    style={{height:95, width:95}}
+                    source={require('../src/product/icons/loginicon.png')}
+                    ></Image>
                 </TouchableOpacity>
             </View>
         </View></>

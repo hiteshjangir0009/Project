@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, StyleSheet, TouchableOpacity, Touchable, Alert, Image, ScrollView, StatusBar } from 'react-native';
 import CheckBox from 'react-native-check-box';
-import Imagefile from './images';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { BottomTabBar } from '@react-navigation/bottom-tabs';
 
