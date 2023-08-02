@@ -1,78 +1,86 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, StyleSheet, TouchableOpacity, Touchable, Alert, Image } from 'react-native';
+import { View, Text, TextInput, StyleSheet, TouchableOpacity, Touchable, Alert, Image, ScrollView } from 'react-native';
 import CheckBox from 'react-native-check-box';
+import Home from './home';
 
 
 
 
-const Login = () => {
+const Login = (props: { navigation: { navigate: (arg0: string) => void; }; }) => {
     const [ischeck, setcheck] = useState(false)
-    const [email, setemail] = useState("")
-    const [password, setpassword] = useState("")
+    const [name, setemail] = useState("")
+    const [number, setnumber] = useState("")
 
-    const submit=()=> {
-        if(email=="h" && password=="h"){
-            console.warn('hii')
+    const submit = () => {
+        if (name == "h" && number == "6") {
+            console.warn('hi')
         }
-        else{console.warn('no')}
+        else { console.warn('no') }
     }
     return (
-        <><View>
-            <Text style={styles.headertext1}>
-                Login
-            </Text>
-            <Text style={styles.headertext2}>
-                Hey users for further information
-                contact us on mykhetstore@gmail.com
-            </Text>
-            <View>
-                <Text style={styles.text1}>Enter your Name</Text>
-                <TextInput
-                    style={styles.inputtext}
-                    placeholderTextColor={'gray'}
-                    placeholder='xyz@gmail.com'
-                    autoCapitalize="none"
-                    autoCorrect={false}
-                    value={email}
-                    onChangeText={(actualdata) => setemail(actualdata)}
-                />
-                <Text style={styles.text1}>Phone No.</Text>
-                <TextInput
-                    placeholderTextColor={'gray'}
-                    style={styles.inputtext}
-                    placeholder='765XXXXXXX'
-                    autoCapitalize="none"
-                    autoCorrect={false}
-                    secureTextEntry={true}
-                    value={password}
-                    onChangeText={(actualdata) => setpassword(actualdata)}
-                />
+        <ScrollView automaticallyAdjustKeyboardInsets={true}>
+            <><View style={{ alignItems: 'center', marginTop: 40 }}>
+                <Image
+                    style={{ height: 110, width: 190 }}
+                    source={require('../src/icons/logo-r.png')}></Image>
+
 
             </View>
+                <View>
+                    <Text style={styles.headertext1}>
+                        Login
+                    </Text>
 
-            <View style={{ paddingHorizontal: 50 }}>
-                <CheckBox
-                    disabled={false}
-                    isChecked={ischeck}
-                    onClick={() => setcheck(!ischeck)}
-                    rightText="Agree to the terms and condition"
-                    rightTextStyle={{color: 'blue',}}
-                />
+                    <View>
+                        <Text style={styles.text1}>Enter your Name</Text>
+                        <TextInput
+                            style={styles.inputtext}
+                            placeholderTextColor={'gray'}
+                            placeholder='hitesh jangir'
+                            autoCorrect={false}
+                            value={name}
+                            onChangeText={(actualdata) => setemail(actualdata)}
+                        />
+                        <Text style={styles.text1}>Enter Phone No.</Text>
+                        <TextInput
+                            placeholderTextColor={'gray'}
+                            style={styles.inputtext}
+                            inputMode='numeric'
+                            placeholder='765XXXXXXX'
+                            autoCapitalize="none"
+                            autoCorrect={false}
 
-            </View>
-            <View>
-                <TouchableOpacity
-                    style={styles.img}
-                    disabled={!ischeck}
-                    onPress={submit}
-                >
-                    <Image 
-                    style={{height:95, width:95}}
-                    source={require('../src/product/icons/loginicon.png')}
-                    ></Image>
-                </TouchableOpacity>
-            </View>
-        </View></>
+
+                            value={number}
+                            onChangeText={(actualdata) => setnumber(actualdata)}
+                        />
+
+                    </View>
+
+                    <View style={{ paddingHorizontal: 50 }}>
+                        <CheckBox
+                            disabled={false}
+                            isChecked={ischeck}
+                            onClick={() => setcheck(!ischeck)}
+                            rightText="Agree to the terms and condition"
+                            rightTextStyle={{ color: '#216b39', }}
+                        />
+
+                    </View>
+                    <View>
+                        <TouchableOpacity
+                            style={styles.img}
+                            disabled={!ischeck}
+                            onPress={()=>props.navigation.navigate("otp")}
+                        >
+                            <Image
+                                style={{ height: 95, width: 95 }}
+                                source={require('../src/icons/loginicon.png')}
+                            ></Image>
+                        </TouchableOpacity>
+                    </View>
+                </View></>
+        </ScrollView>
 
     )
 }
@@ -83,12 +91,7 @@ const styles = StyleSheet.create({
         color: '#000000',
         marginHorizontal: 50,
         marginTop: 30,
-    },
-    headertext2: {
-        fontSize: 20,
-        marginHorizontal: 50,
-        color: '#117937',
-        marginBottom: 50
+        marginBottom: 10
     },
     text1: {
         fontSize: 25,
@@ -105,7 +108,7 @@ const styles = StyleSheet.create({
         marginTop: 20,
         padding: 10,
         color: 'black',
-        backgroundColor: '#cecfce'
+        backgroundColor: '#D2E1D2'
     },
     img: {
         marginTop: 50,

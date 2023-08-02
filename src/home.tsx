@@ -1,35 +1,46 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, StyleSheet, TouchableOpacity, Touchable, Alert, Image, ScrollView, StatusBar } from 'react-native';
-import CheckBox from 'react-native-check-box';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { BottomTabBar } from '@react-navigation/bottom-tabs';
+import { Colors } from 'react-native/Libraries/NewAppScreen';
+
 
 const Home = () => {
-    const [select,selected] = useState("")
-
+    const [nonselect, selected] = useState({})
+    
 
 
     return (
+        
 
-        <ScrollView>
-            <View style={styles.box}>
+        <><ScrollView>
+            <View style={styles.topnav}>
+                <TouchableOpacity>
+                    <Text style={styles.toptext}>Kitchen</Text>
+
+                </TouchableOpacity>
+                <TouchableOpacity>
+                    <Text style={[styles.toptext,{paddingHorizontal:37}]}>Farm</Text>
+
+                </TouchableOpacity>
+            </View>
+            <View style={styles.middlenav}>
                 <TouchableOpacity
-                onPress={()=>selected('styles.btcolor')}
+                    // onPress={() => selected()}
                 >
                     <Text style={styles.Textbar}>Vegetable</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
-                onPress={()=>selected('styles.btcolor')}
+                    onPress={() => selected('styles.btcolor')}
                 >
                     <Text style={styles.Textbar}>Fruit</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
-                onPress={()=>selected('styles.btcolor')}
+                    onPress={() => selected('styles.btcolor')}
                 >
                     <Text style={styles.Textbar}>Spices</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
-                onPress={()=>selected('styles.btcolor')}
+                    onPress={() => selected('styles.btcolor')}
                 >
                     <Text style={styles.Textbar}>Atta</Text>
                 </TouchableOpacity>
@@ -116,26 +127,55 @@ const Home = () => {
 
 
         </ScrollView>
-
-
-
+            {/* BOTTOM NAVBAR */}
+            <View style={{  }}>
+                <View style={styles.container}>
+                    <TouchableOpacity>
+                        <Image style={styles.img} source={require('../src/icons/homew.png')}></Image>
+                    </TouchableOpacity>
+                    <TouchableOpacity>
+                        <Image style={styles.img} source={require('../src/icons/searchw.png')}></Image>
+                    </TouchableOpacity>
+                    <TouchableOpacity>
+                        <Image style={styles.img} source={require('../src/icons/cart.png')}></Image>
+                    </TouchableOpacity>
+                    <TouchableOpacity>
+                        <Image style={styles.img} source={require('../src/icons/menuw.png')}></Image>
+                    </TouchableOpacity>
+                </View>
+            </View></>
 
     )
 }
 
 const styles = StyleSheet.create({
+    topnav:{
+        marginTop:30,
+        flexDirection:'row',
+        justifyContent:'space-around',
+        
+
+    },
+    toptext:{
+        color:'white',
+        fontSize:30,
+        backgroundColor:'#587765',
+        borderRadius:30,
+        paddingHorizontal:20,
+        paddingVertical:10,
+    },
     Textbar: {
         color: 'black',
         fontSize: 20,
-        paddingVertical: 20,
+        paddingVertical: 10,
         // borderWidth:2,
     },
-    box: {
-        flex: 1,
+    middlenav: {
+        
         flexDirection: 'row',
         justifyContent: 'space-evenly',
-        borderBottomWidth: 2,
-        borderColor: 'black'
+        marginVertical:10,
+        backgroundColor:'#D2E1D2'
 
     },
     offerproduct: {
@@ -149,22 +189,35 @@ const styles = StyleSheet.create({
         margin: 5
     },
     prbox: {
-        justifyContent:'space-around',
+        justifyContent: 'space-around',
         backgroundColor: 'red',
         borderWidth: 5,
         borderColor: 'black'
 
 
     },
-    btcolor:{
-        borderBottomWidth:5,
-        borderColor:'green',
-        color:'green'
+    btcolor: {
+        borderBottomWidth: 5,
+        borderColor: 'green',
+        color: 'green'
+    },
+    container: {
+        backgroundColor: '#587765',
+        // marginVertical: 20,
+        // paddingVertical: 10,
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        paddingVertical:10,
+        borderTopStartRadius:25,
+        borderTopEndRadius:25,
+    },
+    img: {
+        
+        height: 50,
+        width: 50,
+        
+
     }
-
-
-
-
 
 })
 
