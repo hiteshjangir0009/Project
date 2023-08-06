@@ -6,7 +6,7 @@ import Home from './home';
 
 
 
-const Login = (props: { navigation: { navigate: (arg0: string) => void; }; }) => {
+const Login = ({navigation}: {navigation: any}) => {
     const [ischeck, setcheck] = useState(false)
     const [name, setemail] = useState("")
     const [number, setnumber] = useState("")
@@ -22,7 +22,7 @@ const Login = (props: { navigation: { navigate: (arg0: string) => void; }; }) =>
             <><View style={{ alignItems: 'center', marginTop: 40 }}>
                 <Image
                     style={{ height: 110, width: 190 }}
-                    source={require('../src/icons/logo-r.png')}></Image>
+                    source={require('../icons/logo-r.png')}></Image>
 
 
             </View>
@@ -49,8 +49,6 @@ const Login = (props: { navigation: { navigate: (arg0: string) => void; }; }) =>
                             placeholder='765XXXXXXX'
                             autoCapitalize="none"
                             autoCorrect={false}
-
-
                             value={number}
                             onChangeText={(actualdata) => setnumber(actualdata)}
                         />
@@ -71,11 +69,11 @@ const Login = (props: { navigation: { navigate: (arg0: string) => void; }; }) =>
                         <TouchableOpacity
                             style={styles.img}
                             disabled={!ischeck}
-                            onPress={()=>props.navigation.navigate("otp")}
+                            onPress={()=>navigation.navigate("otp")}
                         >
                             <Image
                                 style={{ height: 95, width: 95 }}
-                                source={require('../src/icons/loginicon.png')}
+                                source={require('../icons/loginicon.png')}
                             ></Image>
                         </TouchableOpacity>
                     </View>

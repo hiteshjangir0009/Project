@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, StyleSheet, TouchableOpacity, Touchable, Alert, Image, ScrollView } from 'react-native';
+import { View, Text, TextInput, StyleSheet, TouchableOpacity, Touchable, Alert, Image, ScrollView, Button } from 'react-native';
 import Home from './home';
 
 
-const Otp = (props: { navigation: { navigate: (arg0: string) => void; }; }) => {
+const Otp = ({navigation}: {navigation: any}) => {
     return (
         <><View style={{ alignItems: 'center', marginTop: 40 }}>
             <Image
                 style={{ height: 110, width: 190 }}
-                source={require('../src/icons/logo-r.png')}></Image>
+                source={require('../icons/logo-r.png')}></Image>
 
 
         </View>
@@ -21,25 +21,26 @@ const Otp = (props: { navigation: { navigate: (arg0: string) => void; }; }) => {
                     autoCorrect={false}
                 />
             </View>
-            <View>
-                <TouchableOpacity
-                    style={styles.img}
 
-                    onPress={() => props.navigation.navigate("Home")}
-                >
-                    <Image
-                        style={{ height: 95, width: 95 }}
-                        source={require('../src/icons/loginicon.png')}
-                    ></Image>
-                </TouchableOpacity>
-            </View></>
+            <TouchableOpacity
+                style={styles.img}
 
+                onPress={() => navigation.navigate("home")}
+            >
+                <Image
+                    style={{ height: 95, width: 95 }}
+                    source={require('../icons/loginicon.png')}
+                ></Image>
+            </TouchableOpacity></>
+            
+    
     )
 
 }
 
 const styles = StyleSheet.create({
     img: {
+        // position:'absolute',
         marginTop: 50,
         marginHorizontal: 50,
         flex: 1,

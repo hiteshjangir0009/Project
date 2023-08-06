@@ -11,20 +11,11 @@ import {
   Text
 } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
+import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import Mainnavigation from './navigation/mainnavigation';
 
-
-
-const Stack = createStackNavigator();
-const Tab = createBottomTabNavigator();
-
-const App = () => {
-  return (
-    <Mainnavigation/>
+const Tabtopnavigation=()=>{
     
-    
-  )
+
 }
-
-export default App;
+export default Tabtopnavigation;
