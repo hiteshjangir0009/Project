@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, StyleSheet, TouchableOpacity, Touchable, Alert, Image, ScrollView } from 'react-native';
 import CheckBox from 'react-native-check-box';
-import Home from './home';
+import Home from './Kitchenhome';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 
 
@@ -18,7 +19,9 @@ const Login = ({navigation}: {navigation: any}) => {
         else { console.warn('no') }
     }
     return (
-        <ScrollView automaticallyAdjustKeyboardInsets={true}>
+        <ScrollView automaticallyAdjustKeyboardInsets={true} 
+        
+        >
             <><View style={{ alignItems: 'center', marginTop: 40 }}>
                 <Image
                     style={{ height: 110, width: 190 }}

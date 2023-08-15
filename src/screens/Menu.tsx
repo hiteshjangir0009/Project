@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, StyleSheet, TouchableOpacity, Touchable, Alert, Image, ScrollView, FlatList } from 'react-native';
-import Home from './home';
+import Home from './Kitchenhome';
 
 const Menu =()=>{
     return(

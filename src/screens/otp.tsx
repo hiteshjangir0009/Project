@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, StyleSheet, TouchableOpacity, Touchable, Alert, Image, ScrollView, Button } from 'react-native';
-import Home from './home';
+import Home from './Kitchenhome';
+import { useNavigation } from '@react-navigation/native';
 
 
-const Otp = ({navigation}: {navigation: any}) => {
+const Otp = () => {
+
+    const navigation = useNavigation<any>();
     return (
         <><View style={{ alignItems: 'center', marginTop: 40 }}>
             <Image
@@ -25,7 +28,7 @@ const Otp = ({navigation}: {navigation: any}) => {
             <TouchableOpacity
                 style={styles.img}
 
-                onPress={() => navigation.navigate("home")}
+                onPress={() => navigation.navigate("kitchen")}
             >
                 <Image
                     style={{ height: 95, width: 95 }}

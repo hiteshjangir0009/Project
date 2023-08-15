@@ -3,22 +3,33 @@ import { View, Text, TextInput, StyleSheet, TouchableOpacity, Touchable, Alert, 
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 import { Route, Router } from "react-router-dom";
-import Home from './home';
+import Home from './Kitchenhome';
 import { RouteProp, useRoute } from "@react-navigation/native";
-import products from '../apis/products';
+import products from '../apis/productapi';
+import { useDispatch } from 'react-redux';
+import { addtocart } from '../redux/actions';
+import productapi from '../apis/productapi';
 
 interface DisplayParams {
-    productid: number;
-    productname: string;
-    productprice: number;
-    productdetails: string;
-    // Add more properties here if needed
+    productid: any;
 }
 
-const Display = () => {
+const Display = ({ navigation }: { navigation: any }) => {
     const [quantity] = useState("")
     const route = useRoute()
-    const { productid, productname, productprice, productdetails } = route.params as DisplayParams;
+    const { productid } = route.params as DisplayParams
+
+    const selected = productapi.find((item) => {
+        return productid === item.id
+    })
+    const dispatch = useDispatch()
+
+
+    const handleAddToCart = (selected: any) => {
+        
+        dispatch(addtocart(selected))
+        console.warn(selected)
+    }
 
     return (
 
@@ -26,18 +37,20 @@ const Display = () => {
             <View style={{ alignItems: 'center' }}>
                 <Image
                     style={styles.productImage}
-                    source={productid} />
+                    source={selected?.image} />
             </View>
             <View style={styles.pricebox}>
-                <Text style={{ color: 'black', fontSize: 30 }}>{productname} </Text>
-                <Text style={styles.productprice}>{productprice}/kg</Text>
+                <Text style={{ color: 'black', fontSize: 30 }}>{selected?.name} </Text>
+                <Text style={styles.productprice}>{selected?.price}/kg</Text>
             </View>
-            <TouchableOpacity>
+            <TouchableOpacity
+                onPress={() => handleAddToCart(productid)}
+            >
                 <Text style={styles.button}>Add to Basket</Text>
             </TouchableOpacity>
             <View style={styles.detailbox}>
-                <Text style={{ color: 'black', fontSize: 25,marginBottom:10 }}>Health Benefits :-</Text>
-                <Text style={{ color: 'black', fontSize: 15 }}>{productdetails}</Text>
+                <Text style={{ color: 'black', fontSize: 25, marginBottom: 10 }}>Health Benefits :-</Text>
+                <Text style={{ color: 'black', fontSize: 15 }}>{selected?.details}</Text>
             </View>
 
         </ScrollView></>

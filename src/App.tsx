@@ -14,6 +14,9 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Mainnavigation from './navigation/mainnavigation';
 
+import store from './redux/store';
+import { Provider } from 'react-redux';
+
 
 
 const Stack = createStackNavigator();
@@ -21,7 +24,9 @@ const Tab = createBottomTabNavigator();
 
 const App = () => {
   return (
-    <Mainnavigation/>
+    <Provider store={store}>
+      <Mainnavigation/>
+    </Provider>
     
     
   )
