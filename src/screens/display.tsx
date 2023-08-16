@@ -28,23 +28,23 @@ const Display = ({ navigation }: { navigation: any }) => {
     const handleAddToCart = (selected: any) => {
         
         dispatch(addtocart(selected))
-        console.warn(selected)
     }
-
+console.warn(handleAddToCart)
     return (
 
         <><ScrollView>
             <View style={{ alignItems: 'center' }}>
                 <Image
                     style={styles.productImage}
-                    source={selected?.image} />
+                    source={selected?.image} 
+                />
             </View>
             <View style={styles.pricebox}>
                 <Text style={{ color: 'black', fontSize: 30 }}>{selected?.name} </Text>
                 <Text style={styles.productprice}>{selected?.price}/kg</Text>
             </View>
             <TouchableOpacity
-                onPress={() => handleAddToCart(productid)}
+                onPress={() => handleAddToCart(selected)}
             >
                 <Text style={styles.button}>Add to Basket</Text>
             </TouchableOpacity>

@@ -1,9 +1,9 @@
 import { State } from "react-native-gesture-handler";
 import { ADD_TO_CART } from "./constants";
 
-const initialState: never[]= [];
 
-export const reducer = (state = initialState, actions: any) => {
+
+export const reducer = (state = [], actions: any) => {
     switch (actions.type) {
         case ADD_TO_CART:
             return[
