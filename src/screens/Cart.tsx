@@ -12,24 +12,6 @@ import { Vege } from './product';
 
 
 
-const image =[
-    {
-        id: '1',
-        image: require('../product/vegetable/tomato.jpg'),
-        name: 'Tamato',
-        price: '₹125',
-        details: ("Tomato Hybrids are high-quality fruits compared to desi local tomatoes Tomatoes contain Vitamin C,K. lycopene, an antioxidant that reduces the risk of cancer and heart-diseases. They protect the eyes from light induced damage.Essential for pregnant women these tomatoes protect infants against neural tube defects."),
-        quantity: 0
-    },
-    {
-        id: '2',
-        image: require('../product/vegetable/potato.jpg'),
-        name: 'Potato',
-        price: '₹50',
-        details: ("Low in calories and high on flavor, these pocket-sized potatoes are a must-have in your kitchen. This pesticide-free safe to eat baby potatoes are naturally fat-free. They are a good source of fiber which is essential to maintain body weight and is good for digestion."),
-        quantity: 0
-    },
-]
 
 const Cart = ({ navigation }: { navigation: any }) => {
     const route = useRoute()
