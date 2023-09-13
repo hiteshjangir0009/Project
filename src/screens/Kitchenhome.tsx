@@ -1,36 +1,60 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, StyleSheet, TouchableOpacity, Touchable, Alert, Image, ScrollView, StatusBar, FlatList, Button } from 'react-native';
+import { View, Text, TextInput, StyleSheet, TouchableOpacity, Touchable, Alert, Image, ScrollView, StatusBar, FlatList, Button, Dimensions } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { Colors } from 'react-native/Libraries/NewAppScreen';
-import { NavigationContainer } from "@react-navigation/native";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { useNavigation } from 'react-router-dom';
-import products from '../apis/productapi';
-import Cart from './Cart';
-import Menu from './Menu';
-import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
-
-import Checkout from './Checkout';
-import Payment from './Payment';
-import vegetable from '../apis/productapi';
-import {Vege, Fruit } from './product';
 import spices from '../apis/spices';
-import Tabtopnavigation from '../navigation/tabtopnavigation';
+import displayapi from '../apis/displayapi';
+import vegetableapi from '../apis/vegetable';
+import fruits from '../apis/fruits';
 
-import productapi from '../apis/productapi';
 
+const { height, width } = Dimensions.get('screen')
 
-
-const tabs = createMaterialTopTabNavigator();
 const Kitchenhome = ({ navigation }: { navigation: any }) => {
 
+    const renderfooterveg = () => {
+        return (
+            <TouchableOpacity
+            onPress={() => navigation.navigate("toptabv")}
+                style={{ padding: 20 }}
+            >
+                <Image
+                    style={{ height: 50, width: 50 }}
+                    source={require('../icons/loadmore.png')} />
+            </TouchableOpacity>
+        )
+    }
+    const renderfooterfru = () => {
+        return (
+            <TouchableOpacity
+                onPress={() => navigation.navigate("toptabf")}
+                style={{ padding: 20 }}
+            >
+                <Image
+                    style={{ height: 50, width: 50 }}
+                    source={require('../icons/loadmore.png')} />
+            </TouchableOpacity>
+        )
+    }
+    const renderfooterspi = () => {
+        return (
+            <TouchableOpacity
+                onPress={() => navigation.navigate("toptabs")}
+                style={{ padding: 20 }}
+            >
+                <Image
+                    style={{ height: 50, width: 50 }}
+                    source={require('../icons/loadmore.png')} />
+            </TouchableOpacity>
+        )
+    }
     return (
-        <><SafeAreaView>
+        <><SafeAreaView >
             <ScrollView
 
                 style={{
                     backgroundColor: '#EEEEEE',
-                    paddingTop:20
+                    paddingTop: 20,
+
                 }}>
                 <View style={styles.topscreen}>
                     <TouchableOpacity
@@ -58,54 +82,190 @@ const Kitchenhome = ({ navigation }: { navigation: any }) => {
 
                 </View>
                 <View style={styles.navtab}>
-                <TouchableOpacity
-                onPress={()=>navigation.navigate("toptabv")}
-                >
-                    <Text style={styles.navtabtext}>Vegetable</Text>
-                </TouchableOpacity>
-                <TouchableOpacity
-                onPress={()=>navigation.navigate("toptabf")}
-                >
-                    <Text style={styles.navtabtext}>Fruits</Text>
-                </TouchableOpacity>
-                <TouchableOpacity
-                onPress={()=>navigation.navigate("toptabs")}
-                >
-                    <Text style={styles.navtabtext}>Spices</Text>
-                </TouchableOpacity>
-                <TouchableOpacity
-                onPress={()=>navigation.navigate("toptaba")}
-                >
-                    <Text style={styles.navtabtext}>Atta</Text>
-                </TouchableOpacity>
+                    <TouchableOpacity
+                        onPress={() => navigation.navigate("toptabv")}
+                    >
+                        <Text style={styles.navtabtext}>Vegetable</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                        onPress={() => navigation.navigate("toptabf")}
+                    >
+                        <Text style={styles.navtabtext}>Fruits</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                        onPress={() => navigation.navigate("toptabs")}
+                    >
+                        <Text style={styles.navtabtext}>Spices</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                        onPress={() => navigation.navigate("toptaba")}
+                    >
+                        <Text style={styles.navtabtext}>Atta</Text>
+                    </TouchableOpacity>
                 </View>
-                
-                {/* product display */}
-                <FlatList
-                    scrollEnabled={false}
-                    numColumns={2}
-                    data={productapi}
-                    columnWrapperStyle={styles.productstyle}
-                    renderItem={({ item }) => {
-                        return (
 
-                            <TouchableOpacity
-                                style={styles.productbox}
-                                onPress={() => navigation.navigate("display",
-                                    {
-                                        productid: item.id
-                                    })
-                                }>
-                                <Image
-                                    style={styles.primg}
-                                    source={item.image} />
-                                <Text style={styles.producttext}>{item.name}</Text>
+                {/* slide display */}
+                <View>
 
-                            </TouchableOpacity>
-                        )
+                    <FlatList
+
+                        indicatorStyle='black'
+                        showsHorizontalScrollIndicator={false}
+                        pagingEnabled
+                        horizontal
+                        refreshing={true}
+                        data={displayapi}
+                        renderItem={({ item }) => {
+                            return (
+                                <TouchableOpacity
+                                    style={styles.displayimg}
+                                    onPress={() => navigation.navigate("toptabv")}>
+                                    <Image
+                                        style={styles.displayimg}
+                                        source={item.image}
+                                    />
+                                </TouchableOpacity>
+                            )
+                        }}
+                    />
+                </View>
+
+
+                {/* products */}
+
+                <View style={{ marginBottom: 120 }}>
+
+                    {/* vegetable */}
+
+                    <Text style={{
+                        color: 'black',
+                        fontSize: 23,
+                        marginHorizontal: 10,
+                        marginVertical: 20
                     }}
+                    >Vegetables</Text>
+                    <FlatList
+                        ListFooterComponent={renderfooterveg}
 
-                />
+                        ListFooterComponentStyle={{
+                            justifyContent: 'center',
+                            backgroundColor: 'white',
+                            borderRadius: 20,
+                            marginVertical: 40,
+                            marginHorizontal: 20
+                        }}
+
+                        initialNumToRender={2}
+
+                        horizontal
+                        data={vegetableapi}
+                        renderItem={({ item }) => {
+                            return (
+
+                                <TouchableOpacity
+                                    style={styles.productbox}
+                                    onPress={() => navigation.navigate("display",
+                                        {
+                                            productid: item.id
+                                        })
+                                    }>
+                                    <Image
+                                        style={styles.primg}
+                                        source={item.image} />
+                                    <Text style={styles.producttext}>{item.name}</Text>
+
+                                </TouchableOpacity>
+                            )
+                        }}
+                    />
+
+
+                    {/* Fruits */}
+
+                    <Text style={{
+                        color: 'black',
+                        fontSize: 23,
+                        marginHorizontal: 10,
+                        marginVertical: 20
+                    }}
+                    >Fruits</Text>
+                    <FlatList
+                        ListFooterComponent={renderfooterfru}
+
+                        ListFooterComponentStyle={{
+                            justifyContent: 'center',
+                            backgroundColor: 'white',
+                            borderRadius: 20,
+                            marginVertical: 40,
+                            marginHorizontal: 20
+                        }}
+                        horizontal
+
+                        data={fruits}
+
+                        renderItem={({ item }) => {
+                            return (
+
+                                <TouchableOpacity
+                                    style={styles.productbox}
+                                    onPress={() => navigation.navigate("display",
+                                        {
+                                            productid: item.id
+                                        })
+                                    }>
+                                    <Image
+                                        style={styles.primg}
+                                        source={item.image} />
+                                    <Text style={styles.producttext}>{item.name}</Text>
+
+                                </TouchableOpacity>
+                            )
+                        }}
+                    />
+
+
+                    {/* Spices */}
+
+                    <Text style={{
+                        color: 'black',
+                        fontSize: 23,
+                        marginHorizontal: 10,
+                        marginVertical: 20
+                    }}>Spices</Text>
+                    <FlatList
+                        ListFooterComponent={renderfooterspi}
+
+                        ListFooterComponentStyle={{
+                            justifyContent: 'center',
+                            backgroundColor: 'white',
+                            borderRadius: 20,
+                            marginVertical: 40,
+                            marginHorizontal: 20
+                        }}
+                        horizontal
+
+                        data={spices}
+
+                        renderItem={({ item }) => {
+                            return (
+
+                                <TouchableOpacity
+                                    style={styles.productbox}
+                                    onPress={() => navigation.navigate("display",
+                                        {
+                                            productid: item.id
+                                        })
+                                    }>
+                                    <Image
+                                        style={styles.primg}
+                                        source={item.image} />
+                                    <Text style={styles.producttext}>{item.name}</Text>
+
+                                </TouchableOpacity>
+                            )
+                        }}
+                    />
+                </View>
 
 
             </ScrollView>
@@ -126,21 +286,21 @@ const styles = StyleSheet.create({
         borderColor: '#587765',
 
     },
-    navtab:{
-        marginVertical:10,
-        paddingVertical:10,
-        flexDirection:'row',
-        justifyContent:'space-around',
-        backgroundColor:'#D2E1D2'
-        
+    navtab: {
+        marginVertical: 10,
+        paddingVertical: 10,
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        backgroundColor: '#D2E1D2'
+
 
     },
-    navtabtext:{
-        color:'black',
-        fontSize:20,
-        borderColor:'black',
-       
-        padding:5
+    navtabtext: {
+        color: 'black',
+        fontSize: 20,
+        borderColor: 'black',
+
+        padding: 5
 
 
     },
@@ -148,15 +308,23 @@ const styles = StyleSheet.create({
         flex: 1,
         flexDirection: 'row'
     },
+    displayimg: {
+        height: height / 5,
+        width: width,
+        objectFit: 'fill',
+        justifyContent: 'space-between'
+    },
     primg: {
         height: 130,
         width: 160,
         objectFit: 'scale-down',
         borderRadius: 20
+
     },
     productbox: {
         backgroundColor: 'white',
-        borderRadius: 20
+        borderRadius: 20,
+        marginHorizontal: 10
     },
     productstyle: {
         flex: 1,
@@ -164,14 +332,13 @@ const styles = StyleSheet.create({
         marginVertical: 10
 
     },
+
     producttext: {
         color: 'black',
         fontSize: 20,
         margin: 10,
         marginHorizontal: 20,
-
-        // flex:1,
-        // flexWrap:'wrap'
+        textAlign: 'center'
     }
 })
 

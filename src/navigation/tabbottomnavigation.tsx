@@ -192,10 +192,10 @@ const Tabbottomnavigation1 = () => {
                 options={{
                     tabBarIcon: ({ focused }) => (
                         <><Image
-                            style={{ width: 35, height: 35, tintColor: focused ? "white" : "black" }}
+                            style={{ width: 35, height: 35, tintColor: focused ? "black" : "white" }}
                             source={require('../icons/homew.png')} />
                             <Text
-                                style={{ color: focused ? "white" : "black" }}
+                                style={{ color: focused ? "black" : "white" }}
                             >Search</Text></>
                     )
 
@@ -210,10 +210,10 @@ const Tabbottomnavigation1 = () => {
 
                         tabBarIcon: ({ focused }) => (
                             <><Image
-                                style={{ width: 35, height: 35, tintColor: focused ? "white" : "black" }}
+                                style={{ width: 35, height: 35, tintColor: focused ? "black" : "white" }}
                                 source={require('../icons/searchw.png')} />
                                 <Text
-                                    style={{ color: focused ? "white" : "black" }}
+                                    style={{ color: focused ? "black" : "white" }}
                                 >Search</Text></>
                         )
                     }}
@@ -224,10 +224,10 @@ const Tabbottomnavigation1 = () => {
                 options={{
                     tabBarIcon: ({ focused }) => (
                         <><Image
-                            style={{ width: 35, height: 35, tintColor: focused ? "white" : "black" }}
+                            style={{ width: 35, height: 35, tintColor: focused ? "black" : "white" }}
                             source={require('../icons/cart.png')} />
                             <Text
-                                style={{ color: focused ? "white" : "black" }}
+                                style={{ color: focused ? "black" : "white" }}
                             >Cart</Text></>
                     )
                 }}
@@ -238,10 +238,10 @@ const Tabbottomnavigation1 = () => {
                 options={{
                     tabBarIcon: ({ focused }) => (
                         <><Image
-                            style={{ width: 35, height: 35, tintColor: focused ? "white" : "black" }}
+                            style={{ width: 35, height: 35, tintColor: focused ? "black" : "white" }}
                             source={require('../icons/menuw.png')} />
                             <Text
-                                style={{ color: focused ? "white" : "black" }}
+                                style={{ color: focused ? "black" : "white" }}
                             >Menu</Text></>
 
                     )
@@ -289,10 +289,10 @@ const Tabbottomnavigation2 = () => {
                 options={{
                     tabBarIcon: ({ focused }) => (
                         <><Image
-                            style={{ width: 35, height: 35, tintColor: focused ? "white" : "black" }}
+                            style={{ width: 35, height: 35, tintColor: focused ? "black" : "white" }}
                             source={require('../icons/homew.png')} />
                             <Text
-                                style={{ color: focused ? "white" : "black" }}
+                                style={{ color: focused ? "black" : "white" }}
                             >Search</Text></>
                     )
 
@@ -307,10 +307,10 @@ const Tabbottomnavigation2 = () => {
 
                         tabBarIcon: ({ focused }) => (
                             <><Image
-                                style={{ width: 35, height: 35, tintColor: focused ? "white" : "black" }}
+                                style={{ width: 35, height: 35, tintColor: focused ? "black" : "white" }}
                                 source={require('../icons/searchw.png')} />
                                 <Text
-                                    style={{ color: focused ? "white" : "black" }}
+                                    style={{ color: focused ? "black" : "white" }}
                                 >Search</Text></>
                         )
                     }}
@@ -321,10 +321,10 @@ const Tabbottomnavigation2 = () => {
                 options={{
                     tabBarIcon: ({ focused }) => (
                         <><Image
-                            style={{ width: 35, height: 35, tintColor: focused ? "white" : "black" }}
+                            style={{ width: 35, height: 35, tintColor: focused ? "black" : "white" }}
                             source={require('../icons/cart.png')} />
                             <Text
-                                style={{ color: focused ? "white" : "black" }}
+                                style={{ color: focused ? "black" : "white" }}
                             >Cart</Text></>
                     )
                 }}
@@ -335,10 +335,10 @@ const Tabbottomnavigation2 = () => {
                 options={{
                     tabBarIcon: ({ focused }) => (
                         <><Image
-                            style={{ width: 35, height: 35, tintColor: focused ? "white" : "black" }}
+                            style={{ width: 35, height: 35, tintColor: focused ? "black" : "white" }}
                             source={require('../icons/menuw.png')} />
                             <Text
-                                style={{ color: focused ? "white" : "black" }}
+                                style={{ color: focused ? "black" : "white" }}
                             >Menu</Text></>
 
                     )

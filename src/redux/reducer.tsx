@@ -1,34 +1,27 @@
 import { State } from "react-native-gesture-handler";
-import { ADD_TO_CART } from "./constants";
+import { ADD_QUANTITY, ADD_TO_CART, REMOVE_FROM_CART } from "./constants";
 
 
 
 export const reducer = (state = [], actions: any) => {
     switch (actions.type) {
         case ADD_TO_CART:
-            return[
+            return [
                 ...state,
-                actions.payload
+                actions.payload,
             ]
-            
-            default:
-                return state
-        }
-}
-// const initialState = {
-//     cart: [],
-//   };
-  
-//   const cartReducer = (state = initialState, actions: { type: any; payload: any; }) => {
-//     switch (actions.type) {
-//       case 'ADD_TO_CART':
-//         return {
-//           ...state,
-//           cart: [...state.cart, actions.payload],
-//         };
-//       default:
-//         return state;
-//     }
-//   };
-  
-//   export default cartReducer;
+        case REMOVE_FROM_CART:
+            const deleteArray1 = state.filter((item, index) => {
+                return index !== actions.payload;
+            });
+
+            return deleteArray1;
+        case ADD_QUANTITY:
+            return [
+                ...state,
+                actions.payload,
+            ]
+        default:
+            return state;
+    }
+};
